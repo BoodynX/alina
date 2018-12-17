@@ -1,0 +1,34 @@
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+.navbar-laravel {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.vtitle {
+    font-size: 12px;
+}
+
+.footer-text {
+    font-size: 10px;
+    color: #868686;
+    text-align: center;
+}
+
+.jumbotron {
+    background-color: lightseagreen;
+    color: white;
+    height: 200px;
+}
+
+.vid-in-list {
+    margin: 5px;
+}
