@@ -31,3 +31,13 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 const app = new Vue({
     el: '#app'
 });
+
+var figure = $(".video").hover(hoverVideo, hideVideo);
+
+function hoverVideo(e) {
+    $('video', this).get(0).play();
+}
+
+function hideVideo(e) {
+    $('video', this).get(0).load();
+}

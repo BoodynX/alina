@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Video;
 
 class HomeController extends Controller
 {
@@ -16,16 +16,10 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index(Video $videoModel)
     {
-        $width = 230;
-        $height = 120;
+        $videos = $videoModel->all();
 
-        return view('home', compact('height', 'width'));
+        return view('home', ['videos' => $videos]);
     }
 }

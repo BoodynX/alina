@@ -10472,8 +10472,17 @@ a.text-dark:focus {
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
+.vtitle-group {
+  font-size: 14px;
+}
+
 .vtitle {
-  font-size: 12px;
+  float: left;
+  margin-left: 2px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 200px;
 }
 
 .footer-text {
@@ -10489,6 +10498,10 @@ a.text-dark:focus {
 }
 
 .vid-in-list {
-  margin: 5px;
+  margin: 10px;
+}
+
+video {
+  background-color: black;
 }
 

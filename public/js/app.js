@@ -13960,6 +13960,16 @@ var app = new Vue({
   el: '#app'
 });
 
+var figure = $(".video").hover(hoverVideo, hideVideo);
+
+function hoverVideo(e) {
+  $('video', this).get(0).play();
+}
+
+function hideVideo(e) {
+  $('video', this).get(0).load();
+}
+
 /***/ }),
 /* 13 */
 /***/ (function(module, exports, __webpack_require__) {
