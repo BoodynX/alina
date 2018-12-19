@@ -1,0 +1,27 @@
+.videos-list {
+  text-align: center;
+}
+
+.video-title-group {
+  font-size: 14px;
+}
+
+.video-title {
+  float: left;
+  margin-left: 2px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+.video-title-icons {
+  float: right;
+  margin-right: 5px;
+}
+
+.video-tile-in-list {
+  margin: 10px;
+  display: inline-block;
+}
+
