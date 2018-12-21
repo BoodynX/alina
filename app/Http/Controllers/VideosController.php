@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Video;
 
-class HomeController extends Controller
+class VideosController extends Controller
 {
     private const VIDEO_STORAGE = 'storage/videos/';
     /**
@@ -19,7 +19,7 @@ class HomeController extends Controller
 
     public function index(Video $videoModel)
     {
-        return view('home', [
+        return view('videos', [
             'videos' => $videoModel->all(),
             'storage' => self::VIDEO_STORAGE
         ]);

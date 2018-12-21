@@ -15,4 +15,5 @@ Auth::routes();
 
 Route::get('/', function () { return view('welcome'); });
 Route::get('/register', function () { return view('welcome'); });
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'VideosController@index')->name('home');
+Route::get('/videos', 'VideosController@index')->name('videos');
