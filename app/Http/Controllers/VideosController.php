@@ -20,7 +20,7 @@ class VideosController extends Controller
     public function index(Video $videoModel)
     {
         return view('videos', [
-            'videos' => $videoModel->all(),
+            'videos' => $videoModel->all()->sortBy(Video::TITLE),
             'storage' => self::VIDEO_STORAGE
         ]);
     }
