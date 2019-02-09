@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Video;
+use Illuminate\Support\Collection;
 
 class VideosController extends Controller
 {
@@ -20,8 +21,19 @@ class VideosController extends Controller
     public function index(Video $videoModel)
     {
         return view('videos', [
-            'videos' => $videoModel->all()->sortBy(Video::TITLE),
-            'storage' => self::VIDEO_STORAGE
+            'videos' => $this->videosParams($videoModel),
+            'storage' => self::VIDEO_STORAGE,
         ]);
+    }
+
+    private function videosParams(Video $videoModel): Collection
+    {
+        return $videoModel->all()->sortBy(Video::TITLE)->map(function (Video $video) {
+            return (object)[
+                'url' => asset(self::VIDEO_STORAGE . $video->title . '.' . $video->format),
+                'title' => $video->title,
+                'format' => $video->format,
+            ];
+        });
     }
 }
