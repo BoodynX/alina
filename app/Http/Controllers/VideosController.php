@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Video;
+use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 
 class VideosController extends Controller
@@ -18,19 +19,38 @@ class VideosController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(Video $videoModel)
+    public function index(Video $video)
     {
         return view('videos', [
-            'videos' => $this->videosParams($videoModel),
+            'videos' => $this->videosParams($video),
             'storage' => self::VIDEO_STORAGE,
         ]);
+    }
+
+    public function createForm()
+    {
+        return view('add_video');
+    }
+
+    public function create(Request $request, Video $video)
+    {
+        $file = $request->file('video_file');
+        $newFilePath = $file->store('videos');
+
+         $video->addVideo(
+            mb_strtolower($request->title),
+            basename($newFilePath),
+            $file->getClientOriginalExtension()
+        );
+
+        return redirect(config('routes.videos'));
     }
 
     private function videosParams(Video $videoModel): Collection
     {
         return $videoModel->all()->sortBy(Video::TITLE)->map(function (Video $video) {
             return (object)[
-                'url' => asset(self::VIDEO_STORAGE . $video->title . '.' . $video->format),
+                'url' => asset(self::VIDEO_STORAGE . $video->filename),
                 'title' => $video->title,
                 'format' => $video->format,
             ];

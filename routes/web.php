@@ -16,5 +16,7 @@ Auth::routes();
 Route::get('/register', function () { return view('welcome'); });
 
 Route::get('/', function () { return view('welcome'); });
-Route::get('/home', 'VideosController@index')->name('home');
-Route::get('/videos', 'VideosController@index')->name('videos');
+Route::get('/home', 'VideosController@index')->name(config('routes.home'));
+Route::get('/videos', 'VideosController@index')->name(config('routes.videos'));
+Route::get('/add_video', 'VideosController@createForm')->name(config('routes.add_video'));
+Route::post('/video', 'VideosController@create')->name(config('routes.post_video'));
