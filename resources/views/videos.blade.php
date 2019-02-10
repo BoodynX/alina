@@ -7,7 +7,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="videos-list">
+            <div id="videos-list" class="fade-out">
             @foreach($videos as $video)
                     <div class="video-tile-in-list">
                         <div>
@@ -39,4 +39,8 @@
             <a href="{{route(config('routes.add_video'))}}" class="btn btn-primary">Add video</a>
         </p>
     </div>
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('js/videos-list.js') }}" defer></script>
 @endsection

@@ -1,5 +1,20 @@
-.videos-list {
+#videos-list {
   text-align: center;
+  opacity: 1;
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+  -webkit-transition-duration: 2s;
+          transition-duration: 2s;
+  -webkit-transition-timing-function: linear;
+          transition-timing-function: linear;
+  -webkit-transition-delay: 1s;
+          transition-delay: 1s;
+}
+
+#videos-list.fade-out {
+  opacity: 0;
+  -webkit-transition: none;
+  transition: none;
 }
 
 .video-title-group {
