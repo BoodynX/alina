@@ -22,7 +22,7 @@ class VideosController extends Controller
     public function index(Video $video)
     {
         return view('videos', [
-            'videos' => $this->videosParams($video),
+            'videos' => $this->videosList($video),
             'storage' => self::VIDEO_STORAGE,
         ]);
     }
@@ -35,7 +35,7 @@ class VideosController extends Controller
     public function create(Request $request, Video $video)
     {
         $file = $request->file('video_file');
-        $newFilePath = $file->store('videos');
+        $newFilePath = $file->store('public/videos');
 
          $video->addVideo(
             mb_strtolower($request->title),
@@ -46,7 +46,7 @@ class VideosController extends Controller
         return redirect(config('routes.videos'));
     }
 
-    private function videosParams(Video $videoModel): Collection
+    private function videosList(Video $videoModel): Collection
     {
         return $videoModel->all()->sortBy(Video::TITLE)->map(function (Video $video) {
             return (object)[
